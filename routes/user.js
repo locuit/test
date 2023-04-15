@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const verifyToken = require('../middleware/verifyToken');
 const userController = require('../controller/userController');
+const { put } = require('./auth');
 
 
 
@@ -85,5 +86,9 @@ router
     .route('/me')
     .put(verifyToken,userController.updateMyProfile)
     .get(verifyToken,userController.getMyProfile)
+
+router
+    .route('/me/upload-avatar')
+    .post(verifyToken,userController.uploadAvatar)
 
 module.exports = router;

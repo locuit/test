@@ -7,10 +7,13 @@ const userRoute = require('./routes/user');
 const adminRoute = require('./routes/admin');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc'); 
-
+const multer = require('multer');
+const { urlencoded } = require('express');
+const upload = multer({ storage: multer.memoryStorage() });
 
 dotenv.config();
 app.use(express.json());
+app.use(urlencoded({extended: true}));
 
 // Swagger
 const options = {

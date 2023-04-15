@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const authController = {
     registerUser: async (req, res) => {
+        // console.log(req.body);
             const existingUser = await User.findOne({username: req.body.username});
             if (existingUser) 
                 return res.status(400).send("Username already exists");
